@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Estado de Situación: IA y Trabajo en Argentina | Laboratorio Colossus</title>
     <meta name="description"
         content="Análisis de preparación y exposición del mercado laboral argentino frente a la IA Generativa, basado en el framework de Anthropic 2026.">
@@ -23,7 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* === Color Palette === */
         .bg-arg-sky {
             background-color: #74ACDF;
         }
@@ -40,62 +39,16 @@
             color: #F6B40E;
         }
 
-        /* === Animations === */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-60px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(116, 172, 223, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 0 20px 8px rgba(116, 172, 223, 0.15);
             }
         }
 
@@ -107,26 +60,26 @@
             }
 
             50% {
-                transform: translateY(-8px) rotate(10deg);
+                transform: translateY(-6px) rotate(10deg);
             }
         }
 
-        @keyframes countUp {
-            from {
-                opacity: 0;
-                transform: scale(0.5);
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(116, 172, 223, 0.4);
             }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
+            50% {
+                box-shadow: 0 0 15px 6px rgba(116, 172, 223, 0.15);
             }
         }
 
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .animate-on-scroll.visible {
@@ -135,105 +88,129 @@
         }
 
         .animate-on-scroll.delay-1 {
-            transition-delay: 0.15s;
+            transition-delay: 0.1s;
         }
 
         .animate-on-scroll.delay-2 {
-            transition-delay: 0.3s;
+            transition-delay: 0.2s;
         }
 
         .animate-on-scroll.delay-3 {
-            transition-delay: 0.45s;
+            transition-delay: 0.3s;
         }
 
-        /* === Chart Container === */
+        /* Charts - mobile safe */
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 45vh;
-            min-height: 320px;
-            max-height: 400px;
+            max-width: 700px;
+            margin: 0 auto;
+            height: 280px;
         }
 
-        /* === Interactive Button === */
-        .interactive-btn {
-            position: relative;
-            overflow: hidden;
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 220px;
+            }
         }
 
-        .interactive-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(116, 172, 223, 0.08), transparent);
-            transition: left 0.5s;
-        }
-
-        .interactive-btn:hover::before {
-            left: 100%;
-        }
-
-        .interactive-btn.active {
-            background-color: #74ACDF;
-            color: #ffffff;
-            border-color: #5b92c4;
-        }
-
-        /* === Navbar === */
+        /* Navbar */
         .navbar {
             backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
         }
 
         .navbar.scrolled {
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .nav-link {
-            position: relative;
-            padding-bottom: 2px;
+        /* Tab nav pills */
+        .tab-nav {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 4px 0;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-pill {
+            white-space: nowrap;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .tab-pill:hover {
+            background: #f1f5f9;
+            color: #334155;
+        }
+
+        .tab-pill.active {
             background: #74ACDF;
-            transition: width 0.3s ease;
+            color: white;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        @media (max-width: 640px) {
+            .tab-pill {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
         }
 
-        /* === Download Button === */
+        /* Tab pages */
+        .tab-page {
+            display: none;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .tab-page.active {
+            display: block;
+        }
+
+        /* Cards */
+        .info-card {
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(116, 172, 223, 0.15);
+        }
+
+        /* Download btn */
         .download-btn {
             background: linear-gradient(135deg, #74ACDF 0%, #5b92c4 100%);
             color: white;
-            border: none;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(116, 172, 223, 0.4);
-        }
-
-        .download-btn:active {
-            transform: translateY(0);
+            box-shadow: 0 6px 20px rgba(116, 172, 223, 0.35);
         }
 
         .download-btn-gold {
@@ -242,908 +219,760 @@
         }
 
         .download-btn-gold:hover {
-            box-shadow: 0 8px 25px rgba(246, 180, 14, 0.4);
+            box-shadow: 0 6px 20px rgba(246, 180, 14, 0.35);
         }
 
-        /* === Cards === */
-        .info-card {
-            transition: all 0.3s ease;
+        /* Sector toggle */
+        .interactive-btn {
+            position: relative;
+            overflow: hidden;
         }
 
-        .info-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        .interactive-btn.active {
+            background-color: #74ACDF;
+            color: #ffffff;
+            border-color: #5b92c4;
         }
 
-        /* === Stats Card === */
-        .stat-card {
-            transition: all 0.4s ease;
-        }
-
-        .stat-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(116, 172, 223, 0.2);
-        }
-
-        /* === Sun Float === */
+        /* Sun */
         .sun-float {
             animation: floatSun 4s ease-in-out infinite;
         }
 
-        /* === Scroll Progress === */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #74ACDF, #F6B40E);
-            z-index: 100;
-            transition: width 0.1s linear;
-        }
+        /* Mobile safe overflow */
+        @media (max-width: 640px) {
+            .mobile-overflow-safe {
+                overflow-x: hidden;
+                max-width: 100vw;
+            }
 
-        /* === Sector toggle === */
-        .sector-toggle button {
-            transition: all 0.3s ease;
-        }
-
-        /* === Smooth scroll === */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* === Mobile nav === */
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .mobile-menu.open {
-            max-height: 400px;
+            section {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
         }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
     <!-- Sticky Navigation -->
     <nav class="navbar fixed top-0 left-0 right-0 z-50 border-b border-slate-100" id="navbar">
-        <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#hero" class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full border-2 border-arg-sky flex items-center justify-center sun-float">
-                    <span class="text-sm">&#9728;</span>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex justify-between items-center">
+            <a href="#" onclick="showTab('inicio');return false" class="flex items-center gap-2 flex-shrink-0">
+                <div class="w-7 h-7 rounded-full border-2 border-arg-sky flex items-center justify-center sun-float">
+                    <span class="text-xs">&#9728;</span>
                 </div>
-                <span class="font-bold text-sm text-slate-700 hidden sm:inline">Laboratorio Colossus</span>
+                <span class="font-bold text-xs text-slate-700 hidden sm:inline">Laboratorio Colossus</span>
             </a>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#concepto"
-                    class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Concepto</a>
-                <a href="#sectores"
-                    class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Sectores</a>
-                <a href="#informalidad"
-                    class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Informalidad</a>
-                <a href="#rankings"
-                    class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Rankings</a>
-                <a href="#politicas"
-                    class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Políticas</a>
-                <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
-                    class="download-btn px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Informe PDF
-                </a>
+            <!-- Tab navigation -->
+            <div class="tab-nav mx-2 flex-1" id="tabNav">
+                <button class="tab-pill active" onclick="showTab('inicio')">Inicio</button>
+                <button class="tab-pill" onclick="showTab('exposicion')">Exposición</button>
+                <button class="tab-pill" onclick="showTab('sectores')">Sectores</button>
+                <button class="tab-pill" onclick="showTab('informalidad')">Informalidad</button>
+                <button class="tab-pill" onclick="showTab('juventud')">Juventud</button>
+                <button class="tab-pill" onclick="showTab('rankings')">Rankings</button>
+                <button class="tab-pill" onclick="showTab('politicas')">Políticas</button>
             </div>
-            <!-- Mobile hamburger -->
-            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24"
+            <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
+                class="download-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 flex-shrink-0 hidden sm:flex">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-            </button>
-        </div>
-        <!-- Mobile menu -->
-        <div class="mobile-menu md:hidden px-6 pb-0" id="mobileMenu">
-            <div class="flex flex-col gap-3 py-4 border-t border-slate-100">
-                <a href="#concepto" class="text-sm font-medium text-slate-600 hover:text-slate-900 py-2">Concepto</a>
-                <a href="#sectores" class="text-sm font-medium text-slate-600 hover:text-slate-900 py-2">Sectores</a>
-                <a href="#informalidad"
-                    class="text-sm font-medium text-slate-600 hover:text-slate-900 py-2">Informalidad</a>
-                <a href="#rankings" class="text-sm font-medium text-slate-600 hover:text-slate-900 py-2">Rankings</a>
-                <a href="#politicas" class="text-sm font-medium text-slate-600 hover:text-slate-900 py-2">Políticas</a>
-                <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
-                    class="download-btn px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Descargar Informe PDF
-                </a>
-            </div>
+                PDF
+            </a>
         </div>
     </nav>
 
-    <!-- Hero / Header -->
-    <header id="hero" class="bg-white border-b-8 border-arg-sky pt-28 pb-16 px-6 shadow-sm relative overflow-hidden">
-        <!-- Background decorative elements -->
-        <div
-            class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-50 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 opacity-60">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-amber-50 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 opacity-60">
+    <!-- ============================================ -->
+    <!-- TAB PAGES                                    -->
+    <!-- ============================================ -->
+    <div class="pt-14 mobile-overflow-safe">
+
+        <!-- ========== TAB: INICIO ========== -->
+        <div class="tab-page active" id="tab-inicio">
+            <!-- Hero -->
+            <header class="bg-white border-b-8 border-arg-sky pt-10 pb-10 px-4 sm:px-6 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-blue-50 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 opacity-60">
+                </div>
+                <div
+                    class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+                    <div class="text-center md:text-left" style="animation: fadeInUp 0.6s ease-out">
+                        <h4 class="text-arg-sky font-bold tracking-widest uppercase text-xs mb-2">Investigación de
+                            Impacto Laboral 2026</h4>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-3 tracking-tight leading-tight">
+                            Argentina <span class="text-arg-sky">&</span> IA Generativa
+                        </h1>
+                        <p class="text-base sm:text-lg text-slate-500 max-w-xl font-light mb-6">
+                            Análisis de preparación y exposición basado en el framework de <span
+                                class="font-semibold text-slate-800">Anthropic</span> para el mercado de trabajo
+                            nacional.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                            <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
+                                class="download-btn-gold download-btn px-6 py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                Descargar Informe Completo
+                            </a>
+                            <button onclick="showTab('exposicion')"
+                                class="px-6 py-3 rounded-xl text-sm font-semibold border-2 border-slate-200 text-slate-600 hover:border-arg-sky hover:text-arg-sky transition-all">
+                                Explorar Datos →
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center" style="animation: fadeInUp 0.8s ease-out">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-arg-sky flex items-center justify-center mb-2 sun-float"
+                            style="animation: pulseGlow 3s infinite, floatSun 4s ease-in-out infinite;">
+                            <span class="text-3xl sm:text-4xl">&#9728;</span>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Reporte
+                            Soberano</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Quick overview cards -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+                <h2 class="text-xl font-bold text-slate-800 mb-6 text-center">Panorama General</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card">
+                        <span class="block text-2xl sm:text-3xl font-black text-arg-sky">54%</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Empleo Formal Expuesto</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card">
+                        <span class="block text-2xl sm:text-3xl font-black text-red-500">676K</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Sustitución Directa</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card">
+                        <span class="block text-2xl sm:text-3xl font-black text-amber-500">42%</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Informalidad Total</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card">
+                        <span class="block text-2xl sm:text-3xl font-black text-emerald-500">2.1M</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Complementariedad</span>
+                    </div>
+                </div>
+
+                <!-- Sintesis Evaluativa -->
+                <div class="bg-white border-2 border-arg-sky p-5 sm:p-8 rounded-2xl">
+                    <h3 class="text-lg font-black text-slate-900 mb-5 text-center">Síntesis Evaluativa</h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-red-400">
+                            <h4 class="font-bold text-sm mb-1">1. Inversión del Paradigma</h4>
+                            <p class="text-xs text-slate-500">~700K empleos de oficina bajo amenaza directa. La
+                                afectación prioriza mujeres y profesionales de edad madura.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-amber-400">
+                            <h4 class="font-bold text-sm mb-1">2. Informalidad como Acelerador</h4>
+                            <p class="text-xs text-slate-500">42% del tejido laboral desprotegido. La IA penetra sin
+                                barreras, empujando honorarios hacia la subsistencia.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-blue-400">
+                            <h4 class="font-bold text-sm mb-1">3. Estallido Juvenil</h4>
+                            <p class="text-xs text-slate-500">-14% a -25% vacantes junior. 16.9% desempleo mujeres
+                                jóvenes. Generación excluida del aprendizaje corporativo.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-emerald-400">
+                            <h4 class="font-bold text-sm mb-1">4. Respuesta Necesaria</h4>
+                            <p class="text-xs text-slate-500">Soberanía tecnológica (I+D), pedagogía post-IA y redes de
+                                "flexiguridad" para sostener la transición.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-            <div class="text-center md:text-left" style="animation: slideInLeft 0.8s ease-out">
-                <h4 class="text-arg-sky font-bold tracking-widest uppercase text-sm mb-2">Investigación de Impacto
-                    Laboral 2026</h4>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight leading-tight">
-                    Argentina <span class="text-arg-sky">&</span> IA Generativa
-                </h1>
-                <p class="text-xl text-slate-500 max-w-2xl font-light mb-8">
-                    Análisis de preparación y exposición basado en el framework de <span
-                        class="font-semibold text-slate-800">Anthropic</span> para el mercado de trabajo nacional.
-                </p>
+        <!-- ========== TAB: EXPOSICIÓN ========== -->
+        <div class="tab-page" id="tab-exposicion">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 border-l-8 border-arg-sky pl-4 mb-4">El
+                        Concepto de Exposición Observada</h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        El reporte de Anthropic postula que las métricas tradicionales sobreestiman el impacto inmediato
+                        de la IA. Argentina presenta una <strong>brecha de implementación</strong> crítica.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-slate-200 info-card animate-on-scroll">
+                        <ul class="space-y-4">
+                            <li class="flex gap-3 items-start">
+                                <span class="text-arg-sky font-bold text-lg mt-0.5">01.</span>
+                                <p class="text-sm"><strong>Capacidad Teórica:</strong> Lo que los LLMs pueden hacer hoy
+                                    según los benchmarks.</p>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="text-arg-sky font-bold text-lg mt-0.5">02.</span>
+                                <p class="text-sm"><strong>Exposición Observada:</strong> Tareas que realmente están
+                                    siendo automatizadas en procesos productivos reales.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-slate-100 info-card animate-on-scroll delay-1">
+                        <h4 class="text-center text-xs font-bold text-slate-400 uppercase mb-3 tracking-wider">Métrica
+                            de Adopción Local</h4>
+                        <div class="chart-container">
+                            <canvas id="adoptionGapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demografía interactiva -->
+                <div class="bg-white p-5 sm:p-8 rounded-2xl shadow-sm border border-slate-100 animate-on-scroll">
+                    <h3 class="text-xl font-bold mb-2 text-center">¿Quiénes están más expuestos?</h3>
+                    <p class="text-slate-500 text-sm text-center mb-6">Vulnerabilidad según dimensiones demográficas de
+                        la fuerza laboral.</p>
+                    <div class="grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 flex md:flex-col gap-2" id="demo-controls">
+                            <button onclick="updateDemo('general', this)"
+                                class="interactive-btn active flex-1 py-3 px-4 rounded-lg border-2 border-slate-100 text-center md:text-left transition-all hover:border-arg-sky text-xs sm:text-sm font-semibold">
+                                General
+                            </button>
+                            <button onclick="updateDemo('educacion', this)"
+                                class="interactive-btn flex-1 py-3 px-4 rounded-lg border-2 border-slate-100 text-center md:text-left transition-all hover:border-arg-sky text-xs sm:text-sm font-semibold">
+                                Educación
+                            </button>
+                            <button onclick="updateDemo('genero', this)"
+                                class="interactive-btn flex-1 py-3 px-4 rounded-lg border-2 border-slate-100 text-center md:text-left transition-all hover:border-arg-sky text-xs sm:text-sm font-semibold">
+                                Género
+                            </button>
+                        </div>
+                        <div class="md:col-span-7 bg-slate-50 p-3 sm:p-5 rounded-xl">
+                            <div class="chart-container" style="height: 260px;">
+                                <canvas id="demographicRadar"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sustitución vs Complementariedad -->
+                <div class="animate-on-scroll">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Sustitución vs. Complementariedad</h3>
+                    <p class="text-slate-600 text-sm mb-4">El <strong>54% del empleo formal privado</strong> (3M+
+                        puestos) está expuesto. Se divide en tres escenarios:</p>
+                </div>
+                <div class="grid grid-cols-3 gap-2 sm:gap-4">
+                    <div
+                        class="bg-red-50 border border-red-200 p-3 sm:p-5 rounded-xl text-center info-card animate-on-scroll">
+                        <span class="block text-xl sm:text-3xl font-black text-red-500">676K</span>
+                        <h4 class="font-bold text-xs sm:text-sm text-slate-800 mt-1">Directa</h4>
+                        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 hidden sm:block">22% — Oficina,
+                            secretariado, datos</p>
+                    </div>
+                    <div
+                        class="bg-amber-50 border border-amber-200 p-3 sm:p-5 rounded-xl text-center info-card animate-on-scroll delay-1">
+                        <span class="block text-xl sm:text-3xl font-black text-amber-500">129K</span>
+                        <h4 class="font-bold text-xs sm:text-sm text-slate-800 mt-1">Parcial</h4>
+                        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 hidden sm:block">4% — Ventas, técnicos
+                            medios</p>
+                    </div>
+                    <div
+                        class="bg-emerald-50 border border-emerald-200 p-3 sm:p-5 rounded-xl text-center info-card animate-on-scroll delay-2">
+                        <span class="block text-xl sm:text-3xl font-black text-emerald-500">2.1M</span>
+                        <h4 class="font-bold text-xs sm:text-sm text-slate-800 mt-1">Copiloto</h4>
+                        <p class="text-[10px] sm:text-xs text-slate-400 mt-1 hidden sm:block">71% — Directivos,
+                            científicos</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl border border-slate-200 animate-on-scroll">
+                    <h4 class="font-bold text-slate-400 text-xs uppercase mb-3">Distribución del Impacto</h4>
+                    <div class="chart-container" style="height: 240px;">
+                        <canvas id="sustitucionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: SECTORES ========== -->
+        <div class="tab-page" id="tab-sectores">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+                <div class="animate-on-scroll">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 border-l-8 border-arg-sky pl-4 mb-4">
+                        Vulnerabilidad por Sector Económico</h2>
+                    <p class="text-slate-600 text-sm sm:text-base">Argentina depende de los Servicios del Conocimiento
+                        para su ingreso de divisas. Paradójicamente, son los sectores con mayor "Exposición Observada".
+                    </p>
+                </div>
+
+                <div class="flex bg-slate-200 p-1 rounded-lg w-fit" id="sectorToggle">
+                    <button onclick="updateSector('share', this)"
+                        class="sector-active px-4 py-2 text-xs font-bold uppercase rounded bg-white shadow-sm transition-all">Peso
+                        en Empleo</button>
+                    <button onclick="updateSector('risk', this)"
+                        class="px-4 py-2 text-xs font-bold uppercase rounded text-slate-500 transition-all">Riesgo
+                        IA</button>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-white p-5 sm:p-6 rounded-xl border-b-4 border-arg-sky shadow-sm info-card animate-on-scroll">
+                        <h4 class="font-bold text-slate-400 text-xs uppercase mb-4">Comparativa Sectorial</h4>
+                        <div class="chart-container">
+                            <canvas id="sectorBarChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-arg-sky text-white p-5 sm:p-6 rounded-xl info-card animate-on-scroll delay-1">
+                            <h3 class="text-base font-bold mb-2">El Caso de los Servicios Profesionales</h3>
+                            <p class="text-xs leading-relaxed opacity-90">Contadores, abogados y programadores junior
+                                están en la zona de mayor impacto. El impacto no es destrucción inmediata sino
+                                <strong>desaceleración en la contratación</strong>.</p>
+                        </div>
+                        <div
+                            class="bg-white p-5 sm:p-6 rounded-xl border border-slate-200 info-card animate-on-scroll delay-2">
+                            <h3 class="text-base font-bold mb-1 text-slate-800">Calificación Ocupacional (INDEC)</h3>
+                            <div class="space-y-2 mt-3">
+                                <div class="flex justify-between items-center"><span
+                                        class="text-xs text-slate-500">Operativa</span><span
+                                        class="text-sm font-bold text-arg-sky">54.6%</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full">
+                                    <div class="bg-arg-sky h-2 rounded-full" style="width:54.6%"></div>
+                                </div>
+                                <div class="flex justify-between items-center"><span
+                                        class="text-xs text-slate-500">Técnica</span><span
+                                        class="text-sm font-bold text-amber-500">16.7%</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full">
+                                    <div class="bg-amber-400 h-2 rounded-full" style="width:16.7%"></div>
+                                </div>
+                                <div class="flex justify-between items-center"><span class="text-xs text-slate-500">No
+                                        Calificada</span><span class="text-sm font-bold text-slate-400">16.0%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full">
+                                    <div class="bg-slate-300 h-2 rounded-full" style="width:16%"></div>
+                                </div>
+                                <div class="flex justify-between items-center"><span
+                                        class="text-xs text-slate-500">Profesional</span><span
+                                        class="text-sm font-bold text-red-500">11.1%</span></div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full">
+                                    <div class="bg-red-400 h-2 rounded-full" style="width:11.1%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: INFORMALIDAD ========== -->
+        <div class="tab-page" id="tab-informalidad">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+                <div class="bg-slate-900 text-white p-5 sm:p-8 rounded-2xl">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-3">Informalidad: El Falso Amortiguador</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mb-6">El <strong class="text-white">42% del total de
+                            ocupados</strong> trabaja en la informalidad. Lejos de ser un escudo, funciona como
+                        catalizador de precariedad.</p>
+                    <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                        <div class="chart-container" style="height: 230px;">
+                            <canvas id="informalidadChart"></canvas>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                                <span class="block text-xl font-black text-red-400">36.1%</span>
+                                <span class="text-xs text-slate-300">Asalariados sin descuentos jubilatorios</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                                <span class="block text-xl font-black text-amber-400">62.4%</span>
+                                <span class="text-xs text-slate-300">Cuentapropistas no registrados</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                                <span class="block text-xl font-black text-orange-400">~80%</span>
+                                <span class="text-xs text-slate-300">Informalidad en construcción y trabajo
+                                    doméstico</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-lg">
+                            <span class="text-red-400 font-bold text-xs uppercase">01. Sin Red</span>
+                            <p class="text-xs text-slate-300 mt-1">El informal enfrenta la obsolescencia técnica en
+                                absoluta soledad institucional.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-lg">
+                            <span class="text-amber-400 font-bold text-xs uppercase">02. Deflación Salarial</span>
+                            <p class="text-xs text-slate-300 mt-1">Freelancers compiten contra la IA y pares globales.
+                                Carrera hacia el fondo.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-lg">
+                            <span class="text-orange-400 font-bold text-xs uppercase">03. Reconversión
+                                Privatizada</span>
+                            <p class="text-xs text-slate-300 mt-1">La carga de capacitarse recae exclusivamente sobre el
+                                trabajador informal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: JUVENTUD ========== -->
+        <div class="tab-page" id="tab-juventud">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+                <div
+                    class="bg-white border-2 border-arg-sky p-5 sm:p-8 rounded-2xl relative overflow-hidden animate-on-scroll">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 text-6xl sun-float">&#9728;</div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-4">La "Escalera Rota" del Primer Empleo
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
+                        La IA automatiza exactamente las tareas de los roles <em>entry-level</em>. Si se destruyen estos
+                        roles, ¿cómo se formará la próxima generación de senior?
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-slate-50 p-4 rounded-lg text-center stat-card">
+                            <span class="block text-2xl font-black text-arg-sky">-14%</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-bold">Hiring 22-25 años</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg text-center stat-card">
+                            <span class="block text-2xl font-black text-red-500">16.9%</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-bold">Desempleo mujeres 14-29</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg text-center stat-card">
+                            <span class="block text-2xl font-black text-amber-500">37%</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-bold">Cuentapropismo juvenil</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg text-center stat-card">
+                            <span class="block text-2xl font-black text-slate-800">53%</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-bold">Plataformas digitales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 info-card animate-on-scroll">
+                        <h3 class="font-bold text-slate-800 text-sm mb-2">🎓 Desencanto Educativo</h3>
+                        <p class="text-xs text-slate-500">El <strong>50%</strong> de los jóvenes percibe que su
+                            formación es inadecuada frente al mercado alterado por la tecnología.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 info-card animate-on-scroll delay-1">
+                        <h3 class="font-bold text-slate-800 text-sm mb-2">⚡ Precarización Extrema</h3>
+                        <p class="text-xs text-slate-500">El <strong>70%</strong> de jóvenes con bajo nivel educativo
+                            trabaja en precariedad. Vacantes junior cayeron <strong>25%</strong> global.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: RANKINGS ========== -->
+        <div class="tab-page" id="tab-rankings">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+                <div class="text-center animate-on-scroll">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-3">Posición de Argentina en el Mundo</h2>
+                    <p class="text-slate-500 text-sm sm:text-base">ILIA 2024-2025: Argentina cayó al <strong>6°
+                            lugar</strong> en LATAM con <strong>52.98/100</strong> puntos.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-slate-100 animate-on-scroll">
+                        <h4 class="font-bold text-slate-400 text-xs uppercase mb-3">Ranking ILIA — América Latina</h4>
+                        <div class="chart-container" style="height: 260px;">
+                            <canvas id="iliaChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100 animate-on-scroll">
+                            <span class="text-xs font-bold text-red-600">⬇ Talento Humano</span>
+                            <p class="text-xs text-slate-500 mt-1">De <strong>43.21</strong> a <strong>40.59</strong>
+                                pts. Fuga masiva de perfiles STEM.</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100 animate-on-scroll delay-1">
+                            <span class="text-xs font-bold text-red-600">⬇ I+D+A (-10 pts)</span>
+                            <p class="text-xs text-slate-500 mt-1">De <strong>56.04</strong> a <strong>46.20</strong>.
+                                Desfinanciamiento científico y de patentes.</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 animate-on-scroll delay-2">
+                            <span class="text-xs font-bold text-blue-600">76% de CEOs</span>
+                            <p class="text-xs text-slate-500 mt-1">Implementa o planea usar IA. La adopción privada
+                                avanza sin gobernanza estatal.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 animate-on-scroll delay-3">
+                            <span class="text-xs font-bold text-slate-600">🌐 Oxford AI Readiness</span>
+                            <p class="text-xs text-slate-500 mt-1">EE.UU. lidera con 87.20/100. LATAM = "adoptantes"
+                                pasivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: POLÍTICAS ========== -->
+        <div class="tab-page" id="tab-politicas">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+                <div class="animate-on-scroll">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 border-l-8 border-arg-sky pl-4 mb-4">
+                        Políticas de Reconversión Laboral</h2>
+                    <p class="text-slate-600 text-sm sm:text-base">Programas de capacitación desplegados. Existe un
+                        desfase crítico: muchos enseñan habilidades que la IA ya automatiza.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 info-card animate-on-scroll">
+                        <span class="text-xl mb-1 block">🏛️</span>
+                        <h4 class="font-bold text-xs mb-1">Argentina Programa 4.0</h4>
+                        <p class="text-[10px] text-slate-400">Programación, testing, datos. UTN y universidades
+                            públicas.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 info-card animate-on-scroll delay-1">
+                        <span class="text-xl mb-1 block">🎯</span>
+                        <h4 class="font-bold text-xs mb-1">Talento Tech (CABA)</h4>
+                        <p class="text-[10px] text-slate-400">UX/UI, Marketing Digital e IA aplicada.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 info-card animate-on-scroll delay-2">
+                        <span class="text-xl mb-1 block">🌾</span>
+                        <h4 class="font-bold text-xs mb-1">Santa Fe 4.0</h4>
+                        <p class="text-[10px] text-slate-400">IA, Ciberseguridad e IoT.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 info-card animate-on-scroll delay-3">
+                        <span class="text-xl mb-1 block">🍇</span>
+                        <h4 class="font-bold text-xs mb-1">Mendoza Forma Tec</h4>
+                        <p class="text-[10px] text-slate-400">Becas de especialización técnica.</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-3">
+                    <div
+                        class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll">
+                        <span class="block text-2xl font-black text-red-500">80%</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Empresarios detectan brecha</span>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-1">
+                        <span class="block text-2xl font-black text-amber-500">48%</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Sin formación en IA</span>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-2">
+                        <span class="block text-2xl font-black text-arg-sky">70%</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">Faltan pensamiento crítico</span>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border-2 border-amber-300 p-5 rounded-xl animate-on-scroll">
+                    <h3 class="font-bold text-amber-800 text-sm mb-2">⚠️ La Paradoja Pedagógica</h3>
+                    <p class="text-xs text-slate-700">Muchos programas enseñan <strong>codificación rudimentaria y Full
+                            Stack básico</strong> — exactamente lo que la IA absorbe. La educación debe migrar hacia
+                        <strong>pensamiento algorítmico, curaduría ética y liderazgo estratégico</strong>.</p>
+                </div>
+
                 <!-- Download CTA -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <div
+                    class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 sm:p-10 rounded-2xl text-center">
+                    <h3 class="text-white text-xl sm:text-2xl font-bold mb-2">Descargá el Informe Completo</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mb-5 max-w-md mx-auto">Accedé al documento técnico con
+                        el análisis detallado sobre IA y mercado laboral argentino.</p>
                     <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
-                        class="download-btn-gold download-btn px-8 py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-3 shadow-lg">
+                        class="download-btn-gold download-btn inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-bold shadow-xl">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        Descargar Informe Completo
+                        Argentina: Futuro del Trabajo y IA (PDF)
                     </a>
-                    <a href="#concepto"
-                        class="px-8 py-4 rounded-2xl text-base font-semibold border-2 border-slate-200 text-slate-600 hover:border-arg-sky hover:text-arg-sky transition-all text-center">
-                        Explorar Datos ↓
-                    </a>
+                    <p class="text-slate-500 text-[10px] mt-3">Formato PDF · ~800KB · Circulación libre</p>
                 </div>
-            </div>
-            <div class="flex flex-col items-center" style="animation: slideInRight 0.8s ease-out">
-                <div class="w-24 h-24 rounded-full border-4 border-arg-sky flex items-center justify-center mb-3 sun-float"
-                    style="animation: pulseGlow 3s infinite, floatSun 4s ease-in-out infinite;">
-                    <span class="text-5xl">&#9728;</span>
-                </div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Reporte Soberano</span>
             </div>
         </div>
-    </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
-
-        <!-- Sección 1: Concepto -->
-        <section id="concepto" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
-            <div class="space-y-6 animate-on-scroll">
-                <h2 class="text-3xl font-bold text-slate-800 border-l-8 border-arg-sky pl-4">El Concepto de Exposición
-                    Observada</h2>
-                <p class="text-slate-600 leading-relaxed text-lg">
-                    El reporte de Anthropic postula que las métricas tradicionales sobreestiman el impacto inmediato de
-                    la IA. Argentina, con su volatilidad macroeconómica, presenta una <strong>brecha de
-                        implementación</strong> crítica.
-                </p>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 info-card">
-                    <ul class="space-y-5">
-                        <li class="flex gap-4 items-start">
-                            <span class="text-arg-sky font-bold text-xl mt-0.5">01.</span>
-                            <p class="text-sm"><strong>Capacidad Teórica:</strong> Lo que los LLMs pueden hacer hoy
-                                según los benchmarks.</p>
-                        </li>
-                        <li class="flex gap-4 items-start">
-                            <span class="text-arg-sky font-bold text-xl mt-0.5">02.</span>
-                            <p class="text-sm"><strong>Exposición Observada:</strong> Tareas que realmente están siendo
-                                automatizadas en procesos productivos reales.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100 info-card animate-on-scroll delay-1">
-                <h4 class="text-center text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider">Métrica de
-                    Adopción Local</h4>
-                <div class="chart-container">
-                    <canvas id="adoptionGapChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 2: Demografía Interactiva -->
-        <section id="demografia"
-            class="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 scroll-mt-20 animate-on-scroll">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold mb-4">¿Quiénes están más expuestos en Argentina?</h2>
-                <p class="text-slate-500 text-lg">Según Anthropic, la IA afecta principalmente a perfiles calificados.
-                    Explore la vulnerabilidad según distintas dimensiones demográficas de la fuerza laboral nacional.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-12 gap-10 items-center">
-                <div class="md:col-span-5 space-y-3" id="demo-controls">
-                    <button onclick="updateDemo('general', this)"
-                        class="interactive-btn active w-full py-4 px-6 rounded-xl border-2 border-slate-100 text-left transition-all hover:border-arg-sky flex justify-between items-center">
-                        <div>
-                            <span class="font-semibold block">Perfil General</span>
-                            <span class="text-xs text-slate-400">Visión panorámica</span>
-                        </div>
-                        <span class="text-xl">&#10140;</span>
-                    </button>
-                    <button onclick="updateDemo('educacion', this)"
-                        class="interactive-btn w-full py-4 px-6 rounded-xl border-2 border-slate-100 text-left transition-all hover:border-arg-sky flex justify-between items-center">
-                        <div>
-                            <span class="font-semibold block">Nivel Educativo</span>
-                            <span class="text-xs text-slate-400">Universitarios vs. técnicos</span>
-                        </div>
-                        <span class="text-xl">&#10140;</span>
-                    </button>
-                    <button onclick="updateDemo('genero', this)"
-                        class="interactive-btn w-full py-4 px-6 rounded-xl border-2 border-slate-100 text-left transition-all hover:border-arg-sky flex justify-between items-center">
-                        <div>
-                            <span class="font-semibold block">Género y Edad</span>
-                            <span class="text-xs text-slate-400">Brechas demográficas</span>
-                        </div>
-                        <span class="text-xl">&#10140;</span>
-                    </button>
-                </div>
-                <div class="md:col-span-7 bg-slate-50 p-6 rounded-2xl">
-                    <div class="chart-container" style="height: 380px;">
-                        <canvas id="demographicRadar"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 3: Análisis Sectorial -->
-        <section id="sectores" class="space-y-10 scroll-mt-20">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-6 animate-on-scroll">
-                <div class="max-w-2xl">
-                    <h2 class="text-3xl font-bold text-slate-800 mb-4">Vulnerabilidad por Sector Económico</h2>
-                    <p class="text-slate-600 text-lg">Argentina depende de los Servicios del Conocimiento para su
-                        ingreso de divisas. Estos son, paradójicamente, los sectores con mayor "Exposición Observada".
-                    </p>
-                </div>
-                <div class="sector-toggle flex bg-slate-200 p-1 rounded-lg" id="sectorToggle">
-                    <button onclick="updateSector('share', this)"
-                        class="sector-active px-5 py-2.5 text-xs font-bold uppercase rounded bg-white shadow-sm transition-all">Peso
-                        en Empleo</button>
-                    <button onclick="updateSector('risk', this)"
-                        class="px-5 py-2.5 text-xs font-bold uppercase rounded text-slate-500 transition-all">Riesgo
-                        IA</button>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-2xl border-b-8 border-arg-sky shadow-sm info-card animate-on-scroll">
-                    <h4 class="font-bold text-slate-400 text-xs uppercase mb-6 tracking-wider">Comparativa Sectorial
-                    </h4>
-                    <div class="chart-container">
-                        <canvas id="sectorBarChart"></canvas>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <div class="bg-arg-sky text-white p-8 rounded-2xl info-card animate-on-scroll delay-1">
-                        <h3 class="text-xl font-bold mb-4">El Caso de los Servicios Profesionales</h3>
-                        <p class="text-sm leading-relaxed opacity-90">
-                            Contadores, abogados y programadores junior en Argentina están en la zona de mayor impacto.
-                            El reporte sugiere que el impacto no es destrucción de empleo inmediata, sino una
-                            <strong>desaceleración en la contratación</strong>.
-                        </p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl border border-slate-200 info-card animate-on-scroll delay-2">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800">Resiliencia Informal</h3>
-                        <p class="text-sm text-slate-500">
-                            El 40% de la economía argentina (retail presencial, construcción, logística básica) tiene
-                            una exposición cercana a cero en el corto plazo, lo que profundiza la brecha de
-                            productividad interna.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 4: Alerta Juventud -->
-        <section id="juventud"
-            class="bg-white border-2 border-arg-sky p-10 rounded-3xl relative overflow-hidden scroll-mt-20 animate-on-scroll">
-            <div class="absolute top-0 right-0 p-4 opacity-10 text-8xl sun-float">&#9728;</div>
-            <div class="max-w-3xl">
-                <h2 class="text-3xl font-black text-slate-900 mb-6">Evidencia Temprana: Riesgo en el Primer Empleo</h2>
-                <p class="text-lg text-slate-700 leading-relaxed mb-8">
-                    El hallazgo más preocupante del reporte de Anthropic (Massenkoff & McCrory, 2026) es la <span
-                        class="text-arg-sky font-bold">caída en la contratación de jóvenes</span>. Las tareas junior son
-                    las más fáciles de automatizar, eliminando el escalafón de entrada al mercado formal.
-                </p>
-                <div class="grid sm:grid-cols-3 gap-4">
-                    <div class="bg-slate-50 p-6 rounded-xl text-center stat-card">
-                        <span class="block text-3xl font-black text-arg-sky">-12%</span>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold mt-1 block">Hiring Junior
-                            (Global)</span>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl text-center stat-card">
-                        <span class="block text-3xl font-black text-arg-sky">+4Y</span>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold mt-1 block">Experiencia
-                            Requerida</span>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl text-center stat-card">
-                        <span class="block text-3xl font-black text-arg-sky">High</span>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold mt-1 block">Riesgo Exclusión
-                            Arg</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 5: Sustitución vs Complementariedad -->
-        <section id="sustitucion" class="space-y-10 scroll-mt-20">
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4 border-l-8 border-arg-sky pl-4">Sustitución vs.
-                    Complementariedad</h2>
-                <p class="text-slate-600 text-lg max-w-3xl">El Ministerio de Trabajo estima que el <strong>54% del
-                        empleo formal privado</strong> (3M+ puestos) está expuesto a la IA. Pero el impacto no es
-                    uniforme: se divide en tres escenarios.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-red-50 border-2 border-red-200 p-8 rounded-2xl info-card animate-on-scroll">
-                    <span class="block text-4xl font-black text-red-500 mb-2">676K</span>
-                    <h3 class="font-bold text-slate-800 mb-2">Sustitución Directa</h3>
-                    <p class="text-sm text-slate-500">22% del empleo expuesto. Oficina, secretariado, administración de
-                        datos. La IA ejecuta íntegramente las funciones centrales.</p>
-                </div>
-                <div class="bg-amber-50 border-2 border-amber-200 p-8 rounded-2xl info-card animate-on-scroll delay-1">
-                    <span class="block text-4xl font-black text-amber-500 mb-2">129K</span>
-                    <h3 class="font-bold text-slate-800 mb-2">Sustitución Parcial</h3>
-                    <p class="text-sm text-slate-500">4% del empleo expuesto. Comercio, ventas corporativas y roles
-                        técnicos medios. Se reduce el personal necesario.</p>
-                </div>
-                <div
-                    class="bg-emerald-50 border-2 border-emerald-200 p-8 rounded-2xl info-card animate-on-scroll delay-2">
-                    <span class="block text-4xl font-black text-emerald-500 mb-2">2.1M</span>
-                    <h3 class="font-bold text-slate-800 mb-2">Complementariedad</h3>
-                    <p class="text-sm text-slate-500">71% del empleo expuesto. La IA actúa como "copiloto" que potencia
-                        la productividad. Directivos, científicos y técnicos.</p>
-                </div>
-            </div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 animate-on-scroll">
-                <h4 class="font-bold text-slate-400 text-xs uppercase mb-4 tracking-wider">Distribución del Impacto
-                    sobre 3M+ de puestos expuestos</h4>
-                <div class="chart-container" style="max-height:300px; min-height:250px;">
-                    <canvas id="sustitucionChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 6: Informalidad -->
-        <section id="informalidad" class="bg-slate-900 text-white p-10 rounded-3xl scroll-mt-20 animate-on-scroll">
-            <div class="max-w-3xl mb-10">
-                <h2 class="text-3xl font-bold mb-4">Informalidad: El Falso Amortiguador</h2>
-                <p class="text-slate-300 text-lg">El <strong class="text-white">42% del total de ocupados</strong> en
-                    Argentina trabaja en la informalidad. Lejos de ser un escudo contra la IA, funciona como un
-                    catalizador de precariedad.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mb-10">
-                <div>
-                    <div class="chart-container" style="max-height:300px; min-height:260px;">
-                        <canvas id="informalidadChart"></canvas>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div class="bg-white/10 backdrop-blur p-5 rounded-xl">
-                        <span class="block text-2xl font-black text-red-400">36.1%</span>
-                        <span class="text-sm text-slate-300">Asalariados sin descuentos jubilatorios</span>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur p-5 rounded-xl">
-                        <span class="block text-2xl font-black text-amber-400">62.4%</span>
-                        <span class="text-sm text-slate-300">Cuentapropistas no registrados</span>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur p-5 rounded-xl">
-                        <span class="block text-2xl font-black text-orange-400">~80%</span>
-                        <span class="text-sm text-slate-300">Informalidad en construcción y trabajo doméstico</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white/5 border border-white/10 p-6 rounded-xl">
-                    <span class="text-red-400 font-bold text-sm uppercase">01. Sin Red</span>
-                    <p class="text-sm text-slate-300 mt-2">A diferencia del formal, el informal enfrenta la
-                        obsolescencia técnica en absoluta soledad institucional. Sin indemnización, sin seguro de
-                        desempleo.</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-6 rounded-xl">
-                    <span class="text-amber-400 font-bold text-sm uppercase">02. Deflación Salarial</span>
-                    <p class="text-sm text-slate-300 mt-2">Los freelancers argentinos compiten contra la velocidad de la
-                        IA y contra pares globales. Carrera hacia el fondo en honorarios.</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-6 rounded-xl">
-                    <span class="text-orange-400 font-bold text-sm uppercase">03. Reconversión Privatizada</span>
-                    <p class="text-sm text-slate-300 mt-2">La carga de capacitarse recae exclusivamente sobre el
-                        trabajador informal, ensanchando la desigualdad estructural.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 7: Juventud Expandida -->
-        <section id="juventud-data" class="space-y-10 scroll-mt-20">
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4 border-l-8 border-arg-sky pl-4">La "Escalera Rota" del
-                    Empleo Juvenil</h2>
-                <p class="text-slate-600 text-lg max-w-3xl">La IA automatiza exactamente las tareas de los roles
-                    <em>entry-level</em> (asistentes, programadores trainee, analistas junior). Si se destruyen estos
-                    roles, ¿cómo se formará la próxima generación de profesionales senior?
-                </p>
-            </div>
-            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll">
-                    <span class="block text-3xl font-black text-arg-sky">-14%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Contrataciones 22-25 años
-                        (Anthropic)</span>
-                </div>
-                <div
-                    class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-1">
-                    <span class="block text-3xl font-black text-red-500">16.9%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Desempleo mujeres jóvenes 14-29</span>
-                </div>
-                <div
-                    class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-2">
-                    <span class="block text-3xl font-black text-amber-500">37%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Jóvenes en cuentapropismo</span>
-                </div>
-                <div
-                    class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-3">
-                    <span class="block text-3xl font-black text-slate-800">53%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Recurren a plataformas digitales</span>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 info-card animate-on-scroll">
-                    <h3 class="font-bold text-slate-800 mb-3">🎓 Desencanto Educativo</h3>
-                    <p class="text-sm text-slate-500">El <strong>50%</strong> de los jóvenes en búsqueda activa percibe
-                        que su formación es inadecuada frente al mercado alterado por la tecnología. Las competencias
-                        técnicas que adquirieron son ahora ejecutables por software.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 info-card animate-on-scroll delay-1">
-                    <h3 class="font-bold text-slate-800 mb-3">⚡ Precarización Extrema</h3>
-                    <p class="text-sm text-slate-500">El <strong>70%</strong> de jóvenes con bajo nivel educativo
-                        trabaja en condiciones precarias. Las vacantes junior cayeron hasta un <strong>25%</strong> a
-                        nivel global entre 2023-2024.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 8: Rankings Internacionales -->
-        <section id="rankings"
-            class="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 scroll-mt-20 animate-on-scroll">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <h2 class="text-3xl font-bold mb-4">Posición de Argentina en el Mundo</h2>
-                <p class="text-slate-500 text-lg">El ILIA 2024-2025 revela un retroceso preocupante: Argentina cayó al
-                    <strong>6° lugar</strong> en América Latina, con <strong>52.98/100</strong> puntos.
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div>
-                    <h4 class="font-bold text-slate-400 text-xs uppercase mb-4 tracking-wider">Ranking ILIA — América
-                        Latina</h4>
-                    <div class="chart-container" style="max-height:350px; min-height:280px;">
-                        <canvas id="iliaChart"></canvas>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div class="bg-red-50 p-5 rounded-xl border border-red-100">
-                        <span class="text-sm font-bold text-red-600">⬇ Talento Humano</span>
-                        <p class="text-sm text-slate-500 mt-1">De <strong>43.21</strong> a <strong>40.59</strong> pts.
-                            Fuga masiva de perfiles STEM hacia freelance o emigración.</p>
-                    </div>
-                    <div class="bg-red-50 p-5 rounded-xl border border-red-100">
-                        <span class="text-sm font-bold text-red-600">⬇ I+D+A (-10 pts)</span>
-                        <p class="text-sm text-slate-500 mt-1">De <strong>56.04</strong> a <strong>46.20</strong>.
-                            Desfinanciamiento de la producción científica y patentes tecnológicas.</p>
-                    </div>
-                    <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
-                        <span class="text-sm font-bold text-blue-600">76% de CEOs</span>
-                        <p class="text-sm text-slate-500 mt-1">Implementa o planea usar IA en sus operaciones. La
-                            adopción privada avanza sin gobernanza estatal.</p>
-                    </div>
-                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                        <span class="text-sm font-bold text-slate-600">🌐 Oxford AI Readiness</span>
-                        <p class="text-sm text-slate-500 mt-1">EE.UU. lidera con 87.20/100. Latam carece de soberanía
-                            tecnológica: rol de "adoptantes" pasivos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección 9: Políticas Públicas -->
-        <section id="politicas" class="space-y-10 scroll-mt-20">
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4 border-l-8 border-arg-sky pl-4">Políticas de
-                    Reconversión Laboral</h2>
-                <p class="text-slate-600 text-lg max-w-3xl">El Estado y el sector privado han desplegado programas de
-                    capacitación. Pero existe un desfase crítico: muchos enseñan habilidades que la IA ya está
-                    automatizando.</p>
-            </div>
-            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 info-card animate-on-scroll">
-                    <span class="text-arg-sky text-2xl mb-2 block">🏛️</span>
-                    <h4 class="font-bold text-sm mb-1">Argentina Programa 4.0</h4>
-                    <p class="text-xs text-slate-400">Programación, testing, análisis de datos. Articulación con UTN y
-                        universidades públicas.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 info-card animate-on-scroll delay-1">
-                    <span class="text-arg-sky text-2xl mb-2 block">🎯</span>
-                    <h4 class="font-bold text-sm mb-1">Talento Tech (CABA)</h4>
-                    <p class="text-xs text-slate-400">UX/UI, Marketing Digital e IA aplicada. Formato intensivo con
-                        Coderhouse y UTN.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 info-card animate-on-scroll delay-2">
-                    <span class="text-arg-sky text-2xl mb-2 block">🌾</span>
-                    <h4 class="font-bold text-sm mb-1">Santa Fe 4.0</h4>
-                    <p class="text-xs text-slate-400">IA, Ciberseguridad e IoT. Decreto 1487/25 para modernización
-                        industrial.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 info-card animate-on-scroll delay-3">
-                    <span class="text-arg-sky text-2xl mb-2 block">🍇</span>
-                    <h4 class="font-bold text-sm mb-1">Mendoza Forma Tec</h4>
-                    <p class="text-xs text-slate-400">Miles de becas para especialización técnica avanzada.</p>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll">
-                    <span class="block text-3xl font-black text-red-500">80%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Empresarios detectan brecha de
-                        habilidades</span>
-                </div>
-                <div
-                    class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-1">
-                    <span class="block text-3xl font-black text-amber-500">48%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Trabajadores sin formación en IA</span>
-                </div>
-                <div
-                    class="bg-white p-6 rounded-xl border border-slate-200 text-center stat-card animate-on-scroll delay-2">
-                    <span class="block text-3xl font-black text-arg-sky">70%</span>
-                    <span class="text-xs text-slate-400 font-bold uppercase">Citan falta de pensamiento crítico</span>
-                </div>
-            </div>
-            <div class="bg-amber-50 border-2 border-amber-300 p-8 rounded-2xl animate-on-scroll">
-                <h3 class="font-bold text-amber-800 text-lg mb-3">⚠️ La Paradoja Pedagógica</h3>
-                <p class="text-sm text-slate-700">Muchos de estos programas centran su estrategia en la enseñanza de
-                    <strong>codificación rudimentaria y Full Stack básico</strong>. Precisamente, las competencias que
-                    la IA Generativa está absorbiendo con mayor eficiencia. La arquitectura educativa debe migrar hacia
-                    <strong>pensamiento algorítmico, curaduría ética, ingeniería de prompts avanzada y liderazgo
-                        estratégico</strong>.
-                </p>
-            </div>
-        </section>
-
-        <!-- Sección 10: Conclusiones Estratégicas -->
-        <section id="conclusiones"
-            class="bg-white border-2 border-arg-sky p-10 rounded-3xl scroll-mt-20 animate-on-scroll">
-            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center">Síntesis Evaluativa</h2>
-            <div class="grid sm:grid-cols-2 gap-6">
-                <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-red-400">
-                    <h3 class="font-bold text-sm mb-2">1. Inversión del Paradigma</h3>
-                    <p class="text-sm text-slate-500">El riesgo ya no está en el trabajo físico sino en la cúspide
-                        cognitiva. ~700K empleos de oficina bajo amenaza directa. La afectación prioriza mujeres y
-                        profesionales de edad madura.</p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-amber-400">
-                    <h3 class="font-bold text-sm mb-2">2. Informalidad como Acelerador</h3>
-                    <p class="text-sm text-slate-500">42% del tejido laboral está desprotegido. La IA digital penetra la
-                        economía informal sin barreras de entrada, empujando honorarios freelance hacia la subsistencia.
-                    </p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-blue-400">
-                    <h3 class="font-bold text-sm mb-2">3. Estallido de Movilidad Juvenil</h3>
-                    <p class="text-sm text-slate-500">Colapso del "primer escalón": -14% a -25% de vacantes junior.
-                        16.9% desempleo en mujeres jóvenes. Generación excluida de aprendizaje corporativo.</p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-emerald-400">
-                    <h3 class="font-bold text-sm mb-2">4. Respuesta Necesaria</h3>
-                    <p class="text-sm text-slate-500">Soberanía tecnológica (I+D), matriz pedagógica post-IA
-                        (pensamiento crítico sobre codificación básica), y redes de "flexiguridad" para sostener la
-                        transición.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Download CTA Section -->
-        <section
-            class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 rounded-3xl text-center relative overflow-hidden animate-on-scroll">
-            <div class="absolute inset-0 opacity-5">
-                <div class="absolute top-4 left-4 text-6xl">&#9728;</div>
-                <div class="absolute bottom-4 right-4 text-6xl">&#9728;</div>
-            </div>
-            <div class="relative z-10">
-                <h3 class="text-white text-2xl md:text-3xl font-bold mb-3">Descargá el Informe Completo</h3>
-                <p class="text-slate-400 mb-8 max-w-lg mx-auto">Accedé al documento técnico con el análisis detallado
-                    sobre el impacto de la IA Generativa en el mercado laboral argentino.</p>
-                <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
-                    class="download-btn-gold download-btn inline-flex items-center gap-3 px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Argentina: Futuro del Trabajo y IA (PDF)
-                </a>
-                <p class="text-slate-500 text-xs mt-4">Formato PDF · ~800KB · Circulación libre</p>
-            </div>
-        </section>
-
-    </main>
+    </div><!-- end tab pages -->
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-16 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+    <footer class="bg-slate-900 text-slate-400 py-10 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto grid sm:grid-cols-3 gap-8">
             <div>
-                <h3 class="text-white font-bold text-xl mb-4 italic">República Argentina</h3>
-                <p class="text-sm leading-relaxed max-w-sm">
-                    Análisis prospectivo realizado a partir de la fuente primaria de Anthropic "Labor market impacts of
-                    AI: A new measure and early evidence". Adaptación de datos estructurales 2026.
-                </p>
+                <h3 class="text-white font-bold text-sm mb-2 italic">República Argentina</h3>
+                <p class="text-xs leading-relaxed">Análisis a partir de Anthropic "Labor market impacts of AI".
+                    Adaptación 2026.</p>
             </div>
-            <div class="flex flex-col items-start gap-3">
-                <span class="text-white font-semibold text-sm uppercase tracking-wider">Navegación</span>
-                <a href="#concepto" class="text-sm hover:text-white transition-colors">Concepto</a>
-                <a href="#sectores" class="text-sm hover:text-white transition-colors">Sectores</a>
-                <a href="#sustitucion" class="text-sm hover:text-white transition-colors">Sustitución</a>
-                <a href="#informalidad" class="text-sm hover:text-white transition-colors">Informalidad</a>
-                <a href="#rankings" class="text-sm hover:text-white transition-colors">Rankings</a>
-                <a href="#politicas" class="text-sm hover:text-white transition-colors">Políticas</a>
-                <a href="#conclusiones" class="text-sm hover:text-white transition-colors">Conclusiones</a>
+            <div class="flex flex-col gap-1.5">
+                <span class="text-white font-semibold text-xs uppercase tracking-wider mb-1">Secciones</span>
+                <button onclick="showTab('inicio')"
+                    class="text-xs hover:text-white transition-colors text-left">Inicio</button>
+                <button onclick="showTab('exposicion')"
+                    class="text-xs hover:text-white transition-colors text-left">Exposición</button>
+                <button onclick="showTab('sectores')"
+                    class="text-xs hover:text-white transition-colors text-left">Sectores</button>
+                <button onclick="showTab('informalidad')"
+                    class="text-xs hover:text-white transition-colors text-left">Informalidad</button>
+                <button onclick="showTab('juventud')"
+                    class="text-xs hover:text-white transition-colors text-left">Juventud</button>
+                <button onclick="showTab('rankings')"
+                    class="text-xs hover:text-white transition-colors text-left">Rankings</button>
+                <button onclick="showTab('politicas')"
+                    class="text-xs hover:text-white transition-colors text-left">Políticas</button>
             </div>
-            <div class="md:text-right">
-                <div class="flex md:justify-end gap-2 mb-4">
-                    <div class="w-8 h-4 bg-arg-sky rounded-sm"></div>
-                    <div class="w-8 h-4 bg-white rounded-sm"></div>
-                    <div class="w-8 h-4 bg-arg-sky rounded-sm"></div>
+            <div class="sm:text-right">
+                <div class="flex sm:justify-end gap-1.5 mb-3">
+                    <div class="w-6 h-3 bg-arg-sky rounded-sm"></div>
+                    <div class="w-6 h-3 bg-white rounded-sm"></div>
+                    <div class="w-6 h-3 bg-arg-sky rounded-sm"></div>
                 </div>
-                <p class="text-[10px] uppercase tracking-widest font-bold mb-4">Documento Técnico de Circulación Libre
+                <p class="text-[9px] uppercase tracking-widest font-bold mb-3">Documento Técnico de Circulación Libre
                 </p>
-                <a href="Argentina_ Futuro del Trabajo y IA.pdf" download
-                    class="inline-flex items-center gap-2 text-sm text-arg-sky hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                <a href="Argentina_ IA, Empleo y Transición Tecnológica.pdf" download
+                    class="inline-flex items-center gap-1.5 text-xs text-arg-sky hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
-                    Descargar Informe PDF
+                    Descargar PDF
                 </a>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto mt-12 pt-8 border-t border-slate-800 text-center">
-            <p class="text-xs text-slate-500">Laboratorio Colossus · 2026 · Análisis de Impacto de IA en el Trabajo</p>
+        <div class="max-w-5xl mx-auto mt-6 pt-4 border-t border-slate-800 text-center">
+            <p class="text-[10px] text-slate-500">Laboratorio Colossus · 2026 · Análisis de Impacto de IA en el Trabajo
+            </p>
         </div>
     </footer>
 
     <script>
-        // ===== Scroll Progress Bar =====
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            document.getElementById('scrollProgress').style.width = progress + '%';
+        // ===== TAB NAVIGATION =====
+        let chartsInitialized = {};
 
-            // Navbar scroll effect
-            const navbar = document.getElementById('navbar');
-            if (scrollTop > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+            // Show target
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.add('active');
+            // Update pills
+            document.querySelectorAll('.tab-pill').forEach(btn => btn.classList.remove('active'));
+            const pills = document.querySelectorAll('.tab-pill');
+            const tabMap = ['inicio', 'exposicion', 'sectores', 'informalidad', 'juventud', 'rankings', 'politicas'];
+            const idx = tabMap.indexOf(tabId);
+            if (idx >= 0 && pills[idx]) pills[idx].classList.add('active');
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Initialize charts for this tab (lazy)
+            setTimeout(() => initChartsForTab(tabId), 100);
+            // Trigger scroll animations
+            setTimeout(() => {
+                document.querySelectorAll('.tab-page.active .animate-on-scroll').forEach(el => el.classList.add('visible'));
+            }, 200);
+        }
+
+        function initChartsForTab(tabId) {
+            if (chartsInitialized[tabId]) return;
+
+            if (tabId === 'exposicion') {
+                // Adoption Gap
+                new Chart(document.getElementById('adoptionGapChart').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Benchmark', 'Uso Global', 'Argentina'],
+                        datasets: [{ label: '(%)', data: [100, 42, 28], backgroundColor: ['#e2e8f0', '#94a3b8', '#74ACDF'], borderRadius: 8, barThickness: 30 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } } }
+                });
+                // Radar
+                const demoData = { general: [65, 55, 75, 80, 40], educacion: [95, 85, 30, 20, 90], genero: [45, 90, 85, 60, 55] };
+                window.demoChart = new Chart(document.getElementById('demographicRadar').getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: ['Educ. Superior', 'Ingresos Altos', 'Trabajo Cognitivo', 'Edad +45', 'Rep. Femenina'],
+                        datasets: [{ label: 'Vulnerabilidad', data: demoData.general, backgroundColor: 'rgba(116,172,223,0.2)', borderColor: '#74ACDF', pointBackgroundColor: '#F6B40E', pointRadius: 4, borderWidth: 2 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#e2e8f0' } } } }
+                });
+                window.demoData = demoData;
+                // Sustitucion
+                new Chart(document.getElementById('sustitucionChart').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Complementariedad (71%)', 'Sustitución Directa (22%)', 'Sustitución Parcial (4%)'],
+                        datasets: [{ data: [2100, 676, 129], backgroundColor: ['#10b981', '#ef4444', '#f59e0b'], borderWidth: 2, borderColor: '#fff' }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, padding: 10 } } } }
+                });
             }
-        });
 
-        // ===== Mobile Menu =====
-        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        });
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.remove('open');
-            });
-        });
-
-        // ===== Scroll Animations =====
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-        // ===== Chart.js Configuration =====
-        Chart.defaults.font.family = "'Inter', sans-serif";
-        Chart.defaults.color = '#64748b';
-
-        // 1. Adoption Gap Chart
-        const gapCtx = document.getElementById('adoptionGapChart').getContext('2d');
-        new Chart(gapCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Capacidad Benchmark', 'Uso Global', 'Realidad Argentina'],
-                datasets: [{
-                    label: 'Nivel de Exposición (%)',
-                    data: [100, 42, 28],
-                    backgroundColor: ['#e2e8f0', '#94a3b8', '#74ACDF'],
-                    borderRadius: 10,
-                    barThickness: 35
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } },
-                    x: { grid: { display: false } }
-                }
+            if (tabId === 'sectores') {
+                const sectorData = { share: [10, 15, 12, 45, 18], risk: [85, 60, 35, 15, 5] };
+                window.sectorChart = new Chart(document.getElementById('sectorBarChart').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Software', 'Sector Público', 'Industria', 'Comercio/Informal', 'Agro/Energía'],
+                        datasets: [{ label: '%', data: sectorData.share, backgroundColor: '#74ACDF', borderRadius: 5 }]
+                    },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }, y: { grid: { display: false } } } }
+                });
+                window.sectorData = sectorData;
             }
-        });
 
-        // 2. Radar Chart - Demographics
-        const radarCtx = document.getElementById('demographicRadar').getContext('2d');
-        const demoData = {
-            general: [65, 55, 75, 80, 40],
-            educacion: [95, 85, 30, 20, 90],
-            genero: [45, 90, 85, 60, 55]
-        };
-
-        const demoChart = new Chart(radarCtx, {
-            type: 'radar',
-            data: {
-                labels: ['Educación Superior', 'Ingresos Altos', 'Trabajo Cognitivo', 'Edad +45', 'Representación Femenina'],
-                datasets: [{
-                    label: 'Vulnerabilidad',
-                    data: demoData.general,
-                    backgroundColor: 'rgba(116, 172, 223, 0.2)',
-                    borderColor: '#74ACDF',
-                    pointBackgroundColor: '#F6B40E',
-                    pointRadius: 5,
-                    pointHoverRadius: 8,
-                    borderWidth: 3
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: { display: false },
-                        grid: { color: '#e2e8f0' }
-                    }
-                }
+            if (tabId === 'informalidad') {
+                new Chart(document.getElementById('informalidadChart').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Formales (58%)', 'Informales (42%)'],
+                        datasets: [{ data: [58, 42], backgroundColor: ['#74ACDF', '#ef4444'], borderWidth: 3, borderColor: '#1e293b' }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 11 }, padding: 12 } } }, cutout: '60%' }
+                });
             }
-        });
 
+            if (tabId === 'rankings') {
+                new Chart(document.getElementById('iliaChart').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Chile', 'Brasil', 'Uruguay', 'Colombia', 'México', 'Argentina'],
+                        datasets: [{ label: 'ILIA', data: [70.5, 63.8, 60.2, 57.1, 55.4, 52.98], backgroundColor: ['#94a3b8', '#94a3b8', '#94a3b8', '#94a3b8', '#94a3b8', '#74ACDF'], borderRadius: 6, barThickness: 24 }]
+                    },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, max: 80, ticks: { callback: v => v + ' pts' } }, y: { grid: { display: false } } } }
+                });
+            }
+
+            chartsInitialized[tabId] = true;
+        }
+
+        // ===== INTERACTIVE FUNCTIONS =====
         function updateDemo(type, btn) {
             document.querySelectorAll('#demo-controls button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            demoChart.data.datasets[0].data = demoData[type];
-            demoChart.update('active');
-        }
-
-        // 3. Sector Chart
-        const sectorCtx = document.getElementById('sectorBarChart').getContext('2d');
-        const sectorData = {
-            share: [10, 15, 12, 45, 18],
-            risk: [85, 60, 35, 15, 5]
-        };
-
-        const sectorChart = new Chart(sectorCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Software/Conocimiento', 'Sector Público', 'Industria', 'Comercio/Informal', 'Agro/Energía'],
-                datasets: [{
-                    label: 'Porcentaje (%)',
-                    data: sectorData.share,
-                    backgroundColor: '#74ACDF',
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } },
-                    y: { grid: { display: false } }
-                }
+            if (window.demoChart && window.demoData) {
+                window.demoChart.data.datasets[0].data = window.demoData[type];
+                window.demoChart.update('active');
             }
-        });
+        }
 
         function updateSector(mode, btn) {
             const container = document.getElementById('sectorToggle');
-            container.querySelectorAll('button').forEach(b => {
-                b.classList.remove('bg-white', 'shadow-sm', 'sector-active');
-                b.classList.add('text-slate-500');
-            });
-            btn.classList.add('bg-white', 'shadow-sm', 'sector-active');
-            btn.classList.remove('text-slate-500');
-
-            sectorChart.data.datasets[0].data = sectorData[mode];
-            sectorChart.data.datasets[0].backgroundColor = mode === 'risk' ? '#F6B40E' : '#74ACDF';
-            sectorChart.update('active');
+            container.querySelectorAll('button').forEach(b => { b.classList.remove('bg-white', 'shadow-sm', 'sector-active'); b.classList.add('text-slate-500'); });
+            btn.classList.add('bg-white', 'shadow-sm', 'sector-active'); btn.classList.remove('text-slate-500');
+            if (window.sectorChart && window.sectorData) {
+                window.sectorChart.data.datasets[0].data = window.sectorData[mode];
+                window.sectorChart.data.datasets[0].backgroundColor = mode === 'risk' ? '#F6B40E' : '#74ACDF';
+                window.sectorChart.update('active');
+            }
         }
 
-        // 4. Sustitución vs Complementariedad Doughnut
-        const sustCtx = document.getElementById('sustitucionChart').getContext('2d');
-        new Chart(sustCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Complementariedad (71%)', 'Sustitución Directa (22%)', 'Sustitución Parcial (4%)', 'Baja Exposición (38%)'],
-                datasets: [{
-                    data: [2100, 676, 129, 2100],
-                    backgroundColor: ['#10b981', '#ef4444', '#f59e0b', '#e2e8f0'],
-                    borderWidth: 2,
-                    borderColor: '#ffffff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 15 } }
-                }
-            }
+        // ===== Navbar scroll effect =====
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (document.documentElement.scrollTop > 30) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         });
 
-        // 5. Informalidad Donut
-        const infCtx = document.getElementById('informalidadChart').getContext('2d');
-        new Chart(infCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Formales (58%)', 'Informales (42%)'],
-                datasets: [{
-                    data: [58, 42],
-                    backgroundColor: ['#74ACDF', '#ef4444'],
-                    borderWidth: 3,
-                    borderColor: '#1e293b'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 12 }, padding: 15 } }
-                },
-                cutout: '65%'
-            }
-        });
+        // ===== Init animations on page load =====
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.tab-page.active .animate-on-scroll').forEach(el => observer.observe(el));
 
-        // 6. ILIA Ranking
-        const iliaCtx = document.getElementById('iliaChart').getContext('2d');
-        new Chart(iliaCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Chile', 'Brasil', 'Uruguay', 'Colombia', 'México', 'Argentina'],
-                datasets: [{
-                    label: 'Puntaje ILIA',
-                    data: [70.5, 63.8, 60.2, 57.1, 55.4, 52.98],
-                    backgroundColor: ['#94a3b8', '#94a3b8', '#94a3b8', '#94a3b8', '#94a3b8', '#74ACDF'],
-                    borderRadius: 6,
-                    barThickness: 28
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { beginAtZero: true, max: 80, ticks: { callback: v => v + ' pts' } },
-                    y: { grid: { display: false } }
-                }
-            }
-        });
+        // Trigger inicio animations
+        setTimeout(() => {
+            document.querySelectorAll('#tab-inicio .animate-on-scroll').forEach(el => el.classList.add('visible'));
+        }, 300);
     </script>
 </body>
 
